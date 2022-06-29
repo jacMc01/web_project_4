@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./vendor/normalize.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <title>Around The U.S</title>
+</head>
+
+<body>
+    <page class="page">
+        <header class="header">
+            <h1 class="header__title">Around<sup class="header__super-indice">The MX</sup></h1>
+        </header>
+        <section class="profile">
+            <div class="profile__container">
+                <img src="./assets/img/profile__img.jpg" alt="a person" class="profile__img">
+                <div class="profile__person">
+                    <h2 class="profile__name">Jacqueline Mckay</h2>
+                    <p class="profile__about">Estudiante Yandex</p>
+                </div>
+                <button class="profile__button-person"><img src="./assets/img/prfile__pencil.png" alt="heart icon" class="profile__icon"></button>
+            </div>
+            <button class="profile__btn"><img src="./assets/img/profile__plus.png" alt="icon plus" class="profile__button-plus"></button>
+        </section>
+
+        <section class="elements">
+        </section>
+        <section class="popup popup_opened">
+            <button class="popup__button-close"><img src="./assets/img/close_icon.png" alt="close icon"></button>
+            <div class="popup__container">
+                <h4 class="popup__title">Editar perfil</h4>
+                <form class="popup__form" action="form">
+                    <input class="popup__name" id="popup__name" type="text" placeholder="Nombre">
+                    <input class="popup__about" id="popup__about" type="text" placeholder="Acerca de mi">
+                    <button class="popup__button-form">Guardar</button>
+                </form>
+
+            </div>
+        </section>
+
+        <section class="form">
+            <button class="form__button"><img src="./assets/img/close_icon.png" alt="close icon"></button>
+            <div class="form__container">
+                <h4 class="form__title">Nuevo lugar</h4>
+                <form class="form__form" action="form">
+                    <input class="form__name" id="form__name" type="text" placeholder="Titulo">
+                    <input class="form__about" id="form__about" type="text" placeholder="Enlace de la imagen">
+                    <button class="form__button-form">Guardar</button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer__copyright">© 2022 Alrededor de Mexico</p>
+        </footer>
+    </page>
+
+
+    <template class="elements" id="elements">
+        <div class="elements__element" id="elements__element">
+
+            <img type="button" src="./assets/img/elements_trash.png" alt="icon trash" class="elements__trash">
+
+            <img src="#" alt="#" class="elements__photo">
+            <div class="elements__info">
+                <h3 class="elements__place"></h3>
+                <button class="elements__button"><img src="./assets/img/heart.png" alt="icon heart" class="elements__icon"></button>
+            </div>
+        </div>
+
+    </template>
+
+
+    <div class="popup-image">
+        <button class="popup-image__button"><img src="./assets/img/close_icon.png" alt="close icon"></button>
+        <img src="./assets/img/elements__photo_2.jpg" alt="#" class="popup-image__img" id="popup-image__img">
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+/*      ROOT      */
+
+@import url(../blocks/root/root.css);
+
+/*      PAGE      */
+
+@import url(../blocks/page/page.css);
+
+/*      HEADER      */
+
+@import url(../blocks/header/header.css);
+
+/*      PROFILE      */
+
+@import url(../blocks/profile/profile.css);
+
+/*      ELEMENTS      */
+
+@import url(../blocks/elements/elements.css);
+
+/*      FOOTER      */
+
+@import url(../blocks/footer/footer.css);
+
+/*      POPUP      */
+
+@import url(../blocks/popup/popup.css);
+
+/*      FORM      */
+
+@import url(../blocks/form/form.css);
+
+/*      POPUP-IMAGE      */
+
+@import url(../blocks/popup-image/popup-image.css);
