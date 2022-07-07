@@ -52,6 +52,30 @@
     border-bottom: 1px solid #545454;
 }
 
+
+/*######################################################################################*/
+
+.popup__name-error {
+    color: red;
+    background-color: transparent;
+}
+
+.popup__about-error {
+    color: red;
+    background-color: transparent;
+}
+
+.popup__valid {
+    border-bottom-color: #ff0000;
+}
+
+.popup__active-error {
+    visibility: hidden;
+}
+
+
+/*######################################################################################*/
+
 .popup__about {
     width: 358px;
     height: 40px;

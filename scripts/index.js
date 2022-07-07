@@ -109,7 +109,6 @@ setup_cards();
 // set de codigo de los botones
 function openForm() {
     document.querySelector(".popup").style.display = "block";
-
 }
 
 function closeForm() {
@@ -123,9 +122,11 @@ function openFormImages() {
 
 function closeFormImages() {
     document.querySelector(".form").style.display = "none";
+
 }
 
 document.querySelector('.profile__button-person').addEventListener("click", openForm)
+
 document.querySelector('.popup__button-close').addEventListener("click", closeForm)
 
 document.querySelector('.form__button').addEventListener("click", closeFormImages)
@@ -170,4 +171,33 @@ const popup_image = document.querySelector(".popup-image");
 function closePopupImage() {
     popup_image.style.display = "none";
 }
+
 document.querySelector('.popup-image__button').addEventListener("click", closePopupImage)
+
+
+// ########################################################
+
+function pressEscape(e) {
+    if (e.key === "Escape") {
+        closeForm();
+        closeFormImages();
+        closePopupImage();
+    }
+}
+
+document.addEventListener("keydown", pressEscape);
+
+
+// ########################################################
+
+function closePopup(e) {
+
+    if (!e.target.closest(".popup") && !(e.target.classList.contains("profile__button-person") || e.target.classList.contains("profile__icon"))) {
+        closeForm();
+    }
+    if (!e.target.closest(".form") && !(e.target.classList.contains("profile__button-plus") || e.target.classList.contains("profile__btn"))) {
+        closeFormImages();
+    }
+}
+
+document.addEventListener("click", closePopup);
