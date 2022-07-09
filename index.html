@@ -34,6 +34,7 @@
             <button class="popup__button-close"><img src="./assets/img/close_icon.png" alt="close icon"></button>
             <div class="popup__container">
                 <h4 class="popup__title">Editar perfil</h4>
+
                 <form class="popup__form" action="form" novalidate>
                     <input class="popup__name popup__input" id="popup__name" type="text" placeholder="Nombre" minlength="2" maxlength="40" required>
                     <span class="popup__name-error"></span>
@@ -41,6 +42,8 @@
                     <span class="popup__about-error"></span>
                     <button type="submit" class="popup__button-form popup__button-form_inactive">Guardar</button>
                 </form>
+
+
             </div>
         </section>
 
@@ -51,7 +54,7 @@
                 <form class="form__form" action="form">
                     <input class="form__name form__input" id="form__name" type="text" placeholder="Titulo" maxlength="30" minlength="2">
                     <span class="form__name-error"></span>
-                    <input class="form__about form__input" id="form__about" type="url" placeholder="Enlace de la imagen" minlength="2" maxlength="40" required>
+                    <input class="form__about form__input" id="form__about" type="url" placeholder="Enlace de la imagen" minlength="2" maxlength="200" required>
                     <span class="form__about-error"></span>
                     <button class="form__button-form
                     form__button-form_inactive">Guardar</button>

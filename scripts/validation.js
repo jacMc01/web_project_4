@@ -1,9 +1,13 @@
+//esta funcion muestra el error en el input, hay dos clases que no estan en el html popup_valid y popup__active-error donde se remueve esta misma clase para que no se muestre el error (las letras ) el popup valid solo muestra la linea roja de error
+
 const showError = (form, inputElement, errorMessage) => {
     const errorElement = form.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add("popup__valid");
     errorElement.textContent = errorMessage;
     errorElement.classList.remove("popup__active-error")
 }
+
+//aqui en esta funcion pasa para ocultar el error, invercambio el add por el remove. Pasa lo contrario que showError.
 
 const hideInputError = (form, inputElement) => {
     const errorElement = form.querySelector(`.${inputElement.id}-error`);
@@ -13,6 +17,7 @@ const hideInputError = (form, inputElement) => {
     errorElement.textContent = "";
 };
 
+//aqui valida los inputs si es valido true me parece que no hay error, si es false muestra el error
 const checkInputValidity = (form, inputElement) => {
     if (!inputElement.validity.valid) {
         showError(form, inputElement, inputElement.validationMessage);
@@ -21,25 +26,60 @@ const checkInputValidity = (form, inputElement) => {
     }
 };
 
+//esta funcion es para que el formulario de registro se pueda validar.
+
 const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
         return !inputElement.validity.valid;
     });
 };
 
-const toggle = (inputList, buttonElement) => {
-    if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add("popup__button-form_inactive");
-        buttonElement.disabled = true;
-    } else {
-        buttonElement.classList.remove("popup__button-form_inactive");
-        buttonElement.disabled = false;
+// esta funcion es para el boton de registro, para ponerlo disable o no y poder hacer el click
+
+const toggle = (inputList, buttonElement, type) => {
+
+    if (type === "profile") {
+
+        if (hasInvalidInput(inputList)) {
+            buttonElement.classList.add("popup__button-form_inactive");
+            buttonElement.disabled = true;
+        } else {
+            buttonElement.classList.remove("popup__button-form_inactive");
+            buttonElement.disabled = false;
+        }
+
+    } else if (type === "card") {
+        if (hasInvalidInput(inputList)) {
+            buttonElement.classList.add("form__button-form_inactive");
+            buttonElement.disabled = true;
+        } else {
+            buttonElement.classList.remove("form__button-form_inactive");
+            buttonElement.disabled = false;
+        }
+
     }
 };
 
-const setEventListeners = form => {
-    const inputList = Array.from(form.querySelectorAll(".popup__input"));
-    const buttonElement = form.querySelector(".popup__button-form");
+
+
+
+//esta funcion es para el formulario e itera cada input y lo valida
+
+function setEventListeners(form, type = "profile") {
+
+    let inputList = null
+    let buttonElement = null
+
+    if (type === "profile") {
+
+        inputList = Array.from(form.querySelectorAll(".popup__input"));
+        buttonElement = form.querySelector(".popup__button-form");
+
+    } else if (type === "card") {
+        // funciones para el form 2
+        inputList = Array.from(form.querySelectorAll(".form__input"));
+        buttonElement = form.querySelector(".form__button-form");
+    }
 
     toggle(inputList, buttonElement);
 
@@ -47,13 +87,16 @@ const setEventListeners = form => {
         inputElement.addEventListener("input", function() {
             checkInputValidity(form, inputElement);
 
-            toggle(inputList, buttonElement);
+            toggle(inputList, buttonElement, type);
+
         });
     });
+
 };
 
+// esta funcion es para el formulario de registro, para ponerlo disable o no y poder hacer el click
 const enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll(".popup__form"));
+    let formList = Array.from(document.querySelectorAll(".popup__form"));
 
     formList.forEach((form) => {
         form.addEventListener("submit", (evt) => {
@@ -61,8 +104,20 @@ const enableValidation = () => {
         });
         setEventListeners(form);
     });
+
+
+    // funciones para el form 2 de las tarjetas
+    formList = Array.from(document.querySelectorAll(".form__form"));
+    formList.forEach((form) => {
+        form.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+        });
+        setEventListeners(form, "card");
+    });
+
 };
 
+// este objeto no se muy bien para que es, toy chiquita y no se como se llama
 enableValidation({
     formSelector: ".popup__form",
     inputSelector: ".popup__input",
@@ -70,81 +125,4 @@ enableValidation({
     inactiveButtonClass: "popup__button-form_inactive",
     inputErrorClass: "popup__active-error",
     errorClass: "popup__valid"
-});
-
-/*######################################################################################*/
-
-
-const showErrorForm2 = (form, inputElement, errorMessage) => {
-    const errorElement = form.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add("form__valid");
-    errorElement.textContent = errorMessage;
-    errorElement.classList.remove("form__active-error")
-}
-
-const hideInputErrorForm2 = (form, inputElement) => {
-    const errorElement = form.querySelector(`.${inputElement.id}-invalid`);
-
-    inputElement.classList.remove("form__valid");
-    errorElement.classList.add("form__active-error");
-    errorElement.textContent = "";
-};
-
-const checkInputValidityForm2 = (form, inputElement) => {
-    if (!inputElement.validity.valid) {
-        showErrorForm2(form, inputElement, inputElement.validationMessage);
-    } else {
-        hideInputErrorForm2(form, inputElement);
-    }
-};
-
-const hasInvalidInputForm2 = (inputList) => {
-    return inputList.some((inputElement) => {
-        return !inputElement.validity.valid;
-    });
-};
-
-const toggleForm2 = (inputList, buttonElement) => {
-    if (hasInvalidInputForm2(inputList)) {
-        buttonElement.classList.add("form__button-form_inactive");
-        buttonElement.disabled = true;
-    } else {
-        buttonElement.classList.remove("form__button-form_inactive");
-        buttonElement.disabled = false;
-    }
-};
-
-const setEventListenersForm2 = form => {
-    const inputList = Array.from(form.querySelectorAll(".form__input"));
-    const buttonElement = form.querySelector(".form__button-form");
-
-    toggleForm2(inputList, buttonElement);
-
-    inputList.forEach(function(inputElement) {
-        inputElement.addEventListener("input", function() {
-            checkInputValidityForm2(form, inputElement);
-
-            toggleForm2(inputList, buttonElement);
-        });
-    });
-};
-
-const enableValidationForm2 = () => {
-    const formList = Array.from(document.querySelectorAll(".form__form"));
-
-    formList.forEach((form) => {
-        form.addEventListener("submit", (evt) => {
-            evt.preventDefault();
-        });
-        setEventListenersForm2(form);
-    });
-};
-
-enableValidationForm2({
-    formSelector: ".form__form",
-    inputSelector: ".form__input",
-    submitButtonSelector: ".form__button-form",
-    inactiveButtonClass: "form__button-form_inactive",
-    inputErrorClass: "form__active-error",
-    errorClass: "form__valid"
 });
