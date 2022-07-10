@@ -1,13 +1,9 @@
-//esta funcion muestra el error en el input, hay dos clases que no estan en el html popup_valid y popup__active-error donde se remueve esta misma clase para que no se muestre el error (las letras ) el popup valid solo muestra la linea roja de error
-
 const showError = (form, inputElement, errorMessage) => {
     const errorElement = form.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add("popup__valid");
     errorElement.textContent = errorMessage;
     errorElement.classList.remove("popup__active-error")
 }
-
-//aqui en esta funcion pasa para ocultar el error, invercambio el add por el remove. Pasa lo contrario que showError.
 
 const hideInputError = (form, inputElement) => {
     const errorElement = form.querySelector(`.${inputElement.id}-error`);
@@ -17,7 +13,6 @@ const hideInputError = (form, inputElement) => {
     errorElement.textContent = "";
 };
 
-//aqui valida los inputs si es valido true me parece que no hay error, si es false muestra el error
 const checkInputValidity = (form, inputElement) => {
     if (!inputElement.validity.valid) {
         showError(form, inputElement, inputElement.validationMessage);
@@ -26,15 +21,11 @@ const checkInputValidity = (form, inputElement) => {
     }
 };
 
-//esta funcion es para que el formulario de registro se pueda validar.
-
 const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
         return !inputElement.validity.valid;
     });
 };
-
-// esta funcion es para el boton de registro, para ponerlo disable o no y poder hacer el click
 
 const toggle = (inputList, buttonElement, type) => {
 
@@ -59,11 +50,6 @@ const toggle = (inputList, buttonElement, type) => {
 
     }
 };
-
-
-
-
-//esta funcion es para el formulario e itera cada input y lo valida
 
 function setEventListeners(form, type = "profile") {
 
@@ -94,7 +80,6 @@ function setEventListeners(form, type = "profile") {
 
 };
 
-// esta funcion es para el formulario de registro, para ponerlo disable o no y poder hacer el click
 const enableValidation = () => {
     let formList = Array.from(document.querySelectorAll(".popup__form"));
 
@@ -117,7 +102,6 @@ const enableValidation = () => {
 
 };
 
-// este objeto no se muy bien para que es, toy chiquita y no se como se llama
 enableValidation({
     formSelector: ".popup__form",
     inputSelector: ".popup__input",
