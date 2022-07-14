@@ -30,37 +30,40 @@
 
         <section class="elements">
         </section>
-        <section class="popup popup_opened">
-            <button class="popup__button-close"><img src="./assets/img/close_icon.png" alt="close icon"></button>
-            <div class="popup__container">
-                <h4 class="popup__title">Editar perfil</h4>
+        <section>
+            <div class="popup class-form">
+                <button class="popup__button-close"><img src="./assets/img/close_icon.png" alt="close icon"></button>
+                <div class="popup__container">
+                    <h4 class="popup__title">Editar perfil</h4>
 
-                <form class="popup__form" action="form" novalidate>
-                    <input class="popup__name popup__input" id="popup__name" type="text" placeholder="Nombre" minlength="2" maxlength="40" required>
-                    <span class="popup__name-error"></span>
-                    <input class="popup__about popup__input" id="popup__about" type="text" placeholder="Acerca de mi" minlength="2" maxlength="200" required>
-                    <span class="popup__about-error"></span>
-                    <button type="submit" class="popup__button-form popup__button-form_inactive">Guardar</button>
-                </form>
+                    <form class="popup__form" action="form" novalidate>
+                        <input class="popup__name popup__input" id="popup__name" type="text" placeholder="Nombre" minlength="2" maxlength="40" required>
+                        <span class="popup__name-error"></span>
+                        <input class="popup__about popup__input" id="popup__about" type="text" placeholder="Acerca de mi" minlength="2" maxlength="200" required>
+                        <span class="popup__about-error"></span>
+                        <button type="submit" class="popup__button-form popup__button-form_inactive">Guardar</button>
+                    </form>
 
 
+                </div>
             </div>
-        </section>
 
-        <section class="form">
-            <button class="form__button"><img src="./assets/img/close_icon.png" alt="close icon"></button>
-            <div class="form__container">
-                <h4 class="form__title">Nuevo lugar</h4>
-                <form class="form__form" action="form">
-                    <input class="form__name form__input" id="form__name" type="text" placeholder="Titulo" maxlength="30" minlength="2">
-                    <span class="form__name-error"></span>
-                    <input class="form__about form__input" id="form__about" type="url" placeholder="Enlace de la imagen" minlength="2" maxlength="200" required>
-                    <span class="form__about-error"></span>
-                    <button class="form__button-form
+            <div class="form class-form">
+                <button class="form__button"><img src="./assets/img/close_icon.png" alt="close icon"></button>
+                <div class="form__container">
+                    <h4 class="form__title">Nuevo lugar</h4>
+                    <form class="form__form" action="form">
+                        <input class="form__name form__input" id="form__name" type="text" placeholder="Titulo" maxlength="30" minlength="2">
+                        <span class="form__name-error"></span>
+                        <input class="form__about form__input" id="form__about" type="url" placeholder="Enlace de la imagen" minlength="2" maxlength="200" required>
+                        <span class="form__about-error"></span>
+                        <button class="form__button-form
                     form__button-form_inactive">Guardar</button>
-                </form>
+                    </form>
+                </div>
             </div>
         </section>
+
 
         <footer class="footer">
             <p class="footer__copyright">© 2022 Alrededor de Mexico</p>
@@ -68,7 +71,8 @@
     </page>
 
 
-    <template class="elements" id="elements">
+    <template>
+
         <div class="elements__element" id="elements__element">
 
             <img type="button" src="./assets/img/elements_trash.png" alt="icon trash" class="elements__trash">
@@ -82,14 +86,15 @@
 
     </template>
 
-
     <div class="popup-image">
         <button class="popup-image__button"><img class="popup-image__imagen" src="./assets/img/close_icon.png" alt="close icon"></button>
         <img src="./assets/img/elements__photo_2.jpg" alt="#" class="popup-image__img" id="popup-image__img">
     </div>
 
+
+    <script src="./scripts/card.js"></script>
     <script src="./scripts/index.js"></script>
-    <script src="./scripts/validation.js"></script>
+    <script src="scripts/FormValidator.js"></script>
 </body>
 
 </html>
