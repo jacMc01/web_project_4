@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b77a47d-1969-4c6d-8d96-a3a6d20d4d96" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/form/form.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/form/form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/popup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/profile/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/profile/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/FormValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/FormValidator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/card.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +63,7 @@
       <workItem from="1657762042197" duration="650000" />
       <workItem from="1657764017639" duration="12000" />
       <workItem from="1657849175015" duration="1742000" />
-      <workItem from="1658190536629" duration="7679000" />
+      <workItem from="1658190536629" duration="8646000" />
     </task>
     <servers />
   </component>
