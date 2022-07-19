@@ -1,3 +1,7 @@
+import Card from "./card.js";
+import FormValidator from "./formValidator.js";
+import * as utils from "./utils.js";
+
 const elements = document.querySelector(".elements");
 
 // funcion para agregar las cards.
@@ -15,7 +19,7 @@ const addCard = (url, description) => {
 }
 
 // agregar listener al boton que lanza el form para agregar cards
-const add_card_button = document.querySelector('.profile__btn');
+const add_card_button = document.querySelector('.profile__btn-image');
 add_card_button.addEventListener("click", openFormImages)
 
 // set de codigo para agregar una card individual.
@@ -58,17 +62,35 @@ document.querySelector(".popup__button-form").addEventListener("click", handlePr
 // set de codigo de los botones
 function openForm() {
     document.querySelector(".popup").style.display = "block";
+    // llamar la clase de validacion de los inputs
+
+    const config = {
+        formName: "popup__form",
+        type: "profile"
+    }
+    const validationObject = new FormValidator(config);
+    validationObject.enableValidation();
+
 }
-function closeForm() {
+export function closeForm() {
     document.querySelector(".popup").style.display = "none";
 }
 function openFormImages() {
     document.querySelector(".form").style.display = "block";
+
+    const config = {
+        formName: "form__form",
+        type: "card"
+    }
+    const validationObject = new FormValidator(config);
+    validationObject.enableValidation();
 }
-function closeFormImages() {
+export function closeFormImages() {
     document.querySelector(".form").style.display = "none";
 
 }
 document.querySelector('.profile__button-person').addEventListener("click", openForm)
 document.querySelector('.popup__button-close').addEventListener("click", closeForm)
 document.querySelector('.form__button').addEventListener("click", closeFormImages)
+
+utils.setUpListeners()

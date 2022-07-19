@@ -1,4 +1,3 @@
-
 const initialCards = [{
     name: "Valle de Yosemite",
     link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
@@ -26,11 +25,10 @@ const initialCards = [{
 ];
 
 const popupImage = document.querySelector(".popup-image__img");
-
 const popupElement = document.querySelector(".popup-image");
 const closeImage = document.querySelector(".popup-image__imagen");
 
-class Card {
+export default class Card {
 
     constructor(data, cardSelector) {
         this._name = data.name;
@@ -99,25 +97,4 @@ Card.setupInitialCards()
 Card.setupLikeButton()
 
 
-function pressEscape(e) {
-    if (e.key === "Escape") {
-        closeForm();
-        closeFormImages();
-        Card.closePopupImage();
-    }
-}
-
-document.addEventListener("keydown", pressEscape);
-
-function closePopup(e) {
-
-    if (!e.target.closest(".popup") && !(e.target.classList.contains("profile__button-person") || e.target.classList.contains("profile__icon"))) {
-        closeForm();
-    }
-    if (!e.target.closest(".form") && !(e.target.classList.contains("profile__button-plus") || e.target.classList.contains("profile__btn"))) {
-        closeFormImages();
-    }
-}
-
-document.addEventListener("click", closePopup);
 

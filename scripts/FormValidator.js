@@ -1,48 +1,58 @@
-class FormValidator{
-    constructor(form, validation) {
 
-        this._form = form;
+export default class FormValidator {
+    constructor(config) {
+
+        this._form = document.forms[config.formName]
+        this._type = config.type;
 
     }
 
-    _showError(){
-        const showError = (form, inputElement, errorMessage) => {
-            const errorElement = form.querySelector(`.${inputElement.id}-error`);
+    enableValidation() {
+        this._form.addEventListener("submit", (evt) => {
+            evt.preventDefault()
+        });
+
+        this._setEventListeners();
+
+        // funciones para el form 2 de las tarjetas
+        // formList = Array.from(document.querySelectorAll(".form__form"));
+        // formList.forEach((form) => {
+        //     form.addEventListener("submit", (evt) => {
+        //         evt.preventDefault();
+        //     });
+        //     this._setEventListeners(form, "card");
+        // });
+    }
+
+     static _checkInputValidity(form, inputElement) {
+
+        const errorElement = form.querySelector(`.${inputElement.id}-error`);
+
+        if (!inputElement.validity.valid) {
+
             inputElement.classList.add("popup__valid");
-            errorElement.textContent = errorMessage;
+            errorElement.textContent = inputElement.validationMessage;
             errorElement.classList.remove("popup__active-error")
-        }
-    }
 
-    _hideInputError(){
-        const hideInputError = (form, inputElement) => {
-            const errorElement = form.querySelector(`.${inputElement.id}-error`);
+        } else {
 
             inputElement.classList.remove("popup__valid");
             errorElement.classList.add("popup__active-error");
             errorElement.textContent = "";
-        };
-    }
-
-    _checkInputValidity(){
-        if (!inputElement.validity.valid) {
-            this._showError(form, inputElement, inputElement.validationMessage);
-        } else {
-            this._hideInputError(form, inputElement);
         }
     }
 
-    _hasInvalidInput(inputList){
+    static _hasInvalidInput(inputList) {
         return inputList.some((inputElement) => {
             return !inputElement.validity.valid;
         });
     }
 
-    _toggle(inputList, buttonElement, type){
+    static _toggle(type, inputList, buttonElement) {
 
         if (type === "profile") {
 
-            if (this._hasInvalidInput(inputList)) {
+            if (FormValidator._hasInvalidInput(inputList)) {
                 buttonElement.classList.add("popup__button-form_inactive");
                 buttonElement.disabled = true;
             } else {
@@ -51,7 +61,9 @@ class FormValidator{
             }
 
         } else if (type === "card") {
-            if (this._hasInvalidInput(inputList)) {
+
+
+            if (FormValidator._hasInvalidInput(inputList)) {
                 buttonElement.classList.add("form__button-form_inactive");
                 buttonElement.disabled = true;
             } else {
@@ -61,69 +73,38 @@ class FormValidator{
         }
     };
 
+    _setEventListeners() {
 
-    _setEventListeners(form, type = "profile") {
-
-        let inputList = null
+        let inputList = []
         let buttonElement = null
 
-        if (type === "profile") {
+        if (this._type === "profile") {
 
-            inputList = Array.from(form.querySelectorAll(".popup__input"));
-            buttonElement = form.querySelector(".popup__button-form");
+            inputList = Array.from(this._form.querySelectorAll(".popup__input"));
+            buttonElement = this._form.querySelector(".popup__button-form");
 
-        } else if (type === "card") {
+        } else if (this._type === "card") {
             // funciones para el form 2
-            inputList = Array.from(form.querySelectorAll(".form__input"));
-            buttonElement = form.querySelector(".form__button-form");
+
+            inputList = Array.from(this._form.querySelectorAll(".form__input"));
+            buttonElement = this._form.querySelector(".form__button-form");
         }
 
-        this._toggle(inputList, buttonElement);
+        const form = this._form
+        const type = this._type;
 
-        inputList.forEach(function(inputElement) {
-            inputElement.addEventListener("input", function() {
-                this._checkInputValidity(form, inputElement);
+        FormValidator._toggle(type, inputList, buttonElement);
 
-                this._toggle(inputList, buttonElement, type);
+        inputList.forEach(function (inputElement) {
+
+            inputElement.addEventListener("input", function () {
+
+                FormValidator._checkInputValidity(form, inputElement);
+                FormValidator._toggle(type, inputList, buttonElement);
 
             });
         });
 
     };
 
-    enableValidation() {
-        let formList = Array.from(document.querySelectorAll(".popup__form"));
-
-        formList.forEach((form) => {
-            form.addEventListener("submit", (evt) => {
-                evt.preventDefault();
-            });
-            this._setEventListeners(form);
-        });
-
-        // funciones para el form 2 de las tarjetas
-        formList = Array.from(document.querySelectorAll(".form__form"));
-        formList.forEach((form) => {
-            form.addEventListener("submit", (evt) => {
-                evt.preventDefault();
-            });
-            this._setEventListeners(form, "card");
-        });
-    };
 }
-
-
-
-
-
-//
-// enableValidation(
-//     {
-//     formSelector: ".popup__form",
-//     inputSelector: ".popup__input",
-//     submitButtonSelector: ".popup__button-form",
-//     inactiveButtonClass: "popup__button-form_inactive",
-//     inputErrorClass: "popup__active-error",
-//     errorClass: "popup__valid"
-// }
-// );

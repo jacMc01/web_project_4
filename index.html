@@ -25,7 +25,7 @@
                 </div>
                 <button class="profile__button-person"><img src="./assets/img/prfile__pencil.png" alt="heart icon" class="profile__icon"></button>
             </div>
-            <button class="profile__btn"><img src="./assets/img/profile__plus.png" alt="icon plus" class="profile__button-plus"></button>
+            <button class="profile__btn-image"><img src="./assets/img/profile__plus.png" alt="icon plus" class="profile__button-plus"></button>
         </section>
 
         <section class="elements">
@@ -33,10 +33,10 @@
         <section>
             <div class="popup class-form">
                 <button class="popup__button-close"><img src="./assets/img/close_icon.png" alt="close icon"></button>
-                <div class="popup__container">
+                <div class="popup__profile-container">
                     <h4 class="popup__title">Editar perfil</h4>
 
-                    <form class="popup__form" action="form" novalidate>
+                    <form class="popup__form" name="popup__form" novalidate>
                         <input class="popup__name popup__input" id="popup__name" type="text" placeholder="Nombre" minlength="2" maxlength="40" required>
                         <span class="popup__name-error"></span>
                         <input class="popup__about popup__input" id="popup__about" type="text" placeholder="Acerca de mi" minlength="2" maxlength="200" required>
@@ -50,9 +50,9 @@
 
             <div class="form class-form">
                 <button class="form__button"><img src="./assets/img/close_icon.png" alt="close icon"></button>
-                <div class="form__container">
+                <div class="form__image-container">
                     <h4 class="form__title">Nuevo lugar</h4>
-                    <form class="form__form" action="form">
+                    <form class="form__form" name="form__form">
                         <input class="form__name form__input" id="form__name" type="text" placeholder="Titulo" maxlength="30" minlength="2">
                         <span class="form__name-error"></span>
                         <input class="form__about form__input" id="form__about" type="url" placeholder="Enlace de la imagen" minlength="2" maxlength="200" required>
@@ -92,9 +92,7 @@
     </div>
 
 
-    <script src="./scripts/card.js"></script>
-    <script src="./scripts/index.js"></script>
-    <script src="scripts/FormValidator.js"></script>
+    <script src="./scripts/index.js" type="module"></script>
 </body>
 
 </html>
