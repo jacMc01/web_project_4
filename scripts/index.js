@@ -1,5 +1,5 @@
 import Card from "./card.js";
-import FormValidator from "./formValidator.js";
+import FormValidator from "./FormValidator.js";
 import * as utils from "./utils.js";
 
 const elements = document.querySelector(".elements");
